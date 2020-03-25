@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using IG.TechnicalInterview.Model.Supplier;
 using IG.TechnicalInterview.Domain;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace IG.TechnicalInterview.Controllers
 {
@@ -11,9 +13,9 @@ namespace IG.TechnicalInterview.Controllers
     [ApiController]
     public class SuppliersController : ControllerBase
     {
-        private readonly SupplierService _supplierService;
+        private readonly ISupplierService _supplierService;
 
-        public SuppliersController(SupplierService supplierService)
+        public SuppliersController(ISupplierService supplierService)
         {
             _supplierService = supplierService;
         }
@@ -43,8 +45,11 @@ namespace IG.TechnicalInterview.Controllers
         [HttpPost]
         public async Task<ActionResult<Supplier>> PostSupplier(Supplier supplier)
         {
+            if (!ModelState.IsValid)
+            {
+                return new BadRequestObjectResult(ModelState.Values);
+            }
             await _supplierService.InsertSupplier(supplier);
-
             return CreatedAtAction("GetSupplier", new { id = supplier.Id }, supplier);
         }
 

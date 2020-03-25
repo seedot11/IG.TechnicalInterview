@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IG.TechnicalInterview.Model.Supplier
 {
@@ -53,6 +56,18 @@ namespace IG.TechnicalInterview.Model.Supplier
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var validationResults = new List<ValidationResult>();
+
+            if (ActivationDate < DateTime.Today.AddDays(1))
+                validationResults.Add(new ValidationResult("Activation date must be tomorrow or later."));
+
+            Emails.Where(x => !x.IsValid()).ToList()
+                .ForEach(y => validationResults
+                .Add(new ValidationResult($"{y.EmailAddress} is not a valid email.")));
+
+            Phones.Where(x => !x.IsValid()).ToList()
+                .ForEach(y => validationResults
+                .Add(new ValidationResult($"{y.PhoneNumber} is not a valid phone number.")));
+
             return validationResults;
         }
     }

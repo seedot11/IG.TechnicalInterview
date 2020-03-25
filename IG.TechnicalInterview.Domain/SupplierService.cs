@@ -19,13 +19,18 @@ namespace IG.TechnicalInterview.Domain
 
         public async Task<Supplier> GetSupplier(Guid id)
         {
-            var supplier = await _context.Suppliers.FindAsync(id);
-            return supplier;
+            return await _context.Suppliers
+                .Include(a => a.Emails)
+                .Include(b => b.Phones)
+                .FirstAsync(x => x.Id == id);
         }
 
         public async Task<List<Supplier>> GetSuppliers()
         {
-            return await _context.Suppliers.ToListAsync();
+            return await _context.Suppliers
+                .Include(a => a.Emails)
+                .Include(b => b.Phones)
+                .ToListAsync();
         }
 
         public async Task InsertSupplier(Supplier supplier)

@@ -1,4 +1,5 @@
 ﻿using IG.TechnicalInterview.Data.Context;
+using IG.TechnicalInterview.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,8 @@ namespace IG.TechnicalInterview
 
             services.AddDbContext<SupplierContext>(options =>
                     options.UseInMemoryDatabase(databaseName: "SupplierDatabase"));
+
+            services.AddTransient<ISupplierService, SupplierService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

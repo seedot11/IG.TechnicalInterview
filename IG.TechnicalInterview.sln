@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Readme.txt = Readme.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IG.TechnicalInterview.Tests", "IG.TechnicalInterview.Tests\IG.TechnicalInterview.Tests.csproj", "{1A7EC8E0-A9A4-4447-BCB6-FDE1473F7502}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{B6118BFB-7DFC-4373-A5FB-7078D0413C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6118BFB-7DFC-4373-A5FB-7078D0413C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6118BFB-7DFC-4373-A5FB-7078D0413C3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A7EC8E0-A9A4-4447-BCB6-FDE1473F7502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A7EC8E0-A9A4-4447-BCB6-FDE1473F7502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A7EC8E0-A9A4-4447-BCB6-FDE1473F7502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A7EC8E0-A9A4-4447-BCB6-FDE1473F7502}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
